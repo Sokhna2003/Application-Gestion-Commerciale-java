@@ -4,6 +4,8 @@ import entities.Facturation;
 import service.FacturationService;
 import java.util.Scanner;
 
+
+
 public class FacturationView {
     private FacturationService service;
     private Scanner scanner;
