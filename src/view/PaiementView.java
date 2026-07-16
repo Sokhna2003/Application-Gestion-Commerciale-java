@@ -19,11 +19,14 @@ public class PaiementView {
     }
 
     public void afficherMenu() {
+        int choix = 0;
+        do {
         System.out.println("\n--- GESTION DES PAIEMENTS ---");
         System.out.println("1. Enregistrer un paiement pour une facture");
         System.out.println("2. Afficher les paiements d'une facture");
+        System.out.println("3. Retour au menu principal");
         System.out.print("Votre choix : ");
-        int choix = scanner.nextInt();
+        choix = scanner.nextInt();
         scanner.nextLine();
 
         if (choix == 1) {
@@ -61,5 +64,6 @@ public class PaiementView {
                 p.toChaine();
             }
         }
+        }  while (choix != 3);
     }
 }
