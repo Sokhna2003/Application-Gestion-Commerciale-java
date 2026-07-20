@@ -1,0 +1,4 @@
+*.class
+src/**/*.class
+/bin/
+/out/
