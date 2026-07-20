@@ -20,7 +20,7 @@ public class FacturationView {
         do {
         System.out.println("\n--- GESTION DES FACTURES ---");
         System.out.println("1. Afficher toutes les factures");
-        System.out.println("2. Afficher les factures impayées (Bonus)");
+        System.out.println("2. Afficher les factures impayées");
         System.out.println("3. Afficher les factures soldées");
         System.out.println("4. Retour au menu principal");
         System.out.print("Votre choix : ");

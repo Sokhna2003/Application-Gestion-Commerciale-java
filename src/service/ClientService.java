@@ -7,8 +7,8 @@ import java.util.List;
 public class ClientService {
     private ClientRepository repository;
 
-    public ClientService(ClientRepository repository) {
-        this.repository = repository;
+    public ClientService() {
+        this.repository = new ClientRepository();
     }
 
     public void ajouterClient(Client client) {

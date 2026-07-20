@@ -10,8 +10,8 @@ public class CommandeService {
     private CommandeRepository commandeRepository;
     private FacturationService facturationService;
 
-    public CommandeService(CommandeRepository commandeRepository, FacturationService facturationService) {
-        this.commandeRepository = commandeRepository;
+    public CommandeService(FacturationService facturationService) {
+        this.commandeRepository = new CommandeRepository();
         this.facturationService = facturationService;
     }
 

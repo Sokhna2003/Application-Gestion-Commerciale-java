@@ -1,4 +1,3 @@
-import repository.*;
 import service.*;
 import view.*;
 import java.util.Scanner;
@@ -8,24 +7,16 @@ public class Main {
         // Initialisation du Scanner partagé pour toute l'application
         Scanner scanner = new Scanner(System.in);
 
-        // Instanciation de la couche REPOSITORY
-        CategorieProduitRepository categorieRepo = new CategorieProduitRepository();
-        ClientRepository clientRepo = new ClientRepository();
-        ProduitRepository produitRepo = new ProduitRepository();
-        CommandeRepository commandeRepo = new CommandeRepository();
-        FacturationRepository facturationRepo = new FacturationRepository();
-        PaiementRepository paiementRepo = new PaiementRepository();
-
         // Instanciation de la couche SERVICE (avec injection des repositories)
-        CategorieProduitService categorieService = new CategorieProduitService(categorieRepo);
-        ClientService clientService = new ClientService(clientRepo);
-        ProduitService produitService = new ProduitService(produitRepo);
-        FacturationService facturationService = new FacturationService(facturationRepo);
+        CategorieProduitService categorieService = new CategorieProduitService();
+        ClientService clientService = new ClientService();
+        ProduitService produitService = new ProduitService();
+        FacturationService facturationService = new FacturationService();
         
         // CommandeService a besoin de FacturationService pour la génération automatique
-        CommandeService commandeService = new CommandeService(commandeRepo, facturationService);
+        CommandeService commandeService = new CommandeService(facturationService);
         // PaiementService a besoin de FacturationService pour mettre à jour les statuts
-        PaiementService paiementService = new PaiementService(paiementRepo, facturationService);
+        PaiementService paiementService = new PaiementService(facturationService);
 
         // Instanciation de la couche VIEW (avec injection des services et du scanner)
         CategorieProduitView categorieView = new CategorieProduitView(categorieService, scanner);
@@ -34,6 +25,7 @@ public class Main {
         CommandeView commandeView = new CommandeView(commandeService, clientService, produitService, scanner);
         FacturationView facturationView = new FacturationView(facturationService, scanner);
         PaiementView paiementView = new PaiementView(paiementService, facturationService, scanner);
+
 
         // Instanciation du Menu Principal et lancement de l'application
         MenuView menuPrincipal = new MenuView(
@@ -46,7 +38,7 @@ public class Main {
             scanner
         );
 
-        // Lancement de la boucle infinie du menu console
+        // Lancement de l'application
         menuPrincipal.afficherMenuPrincipal();
 
         // Fermeture propre du scanner à la fermeture de l'application
