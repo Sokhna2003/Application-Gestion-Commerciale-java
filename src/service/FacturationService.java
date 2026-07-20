@@ -10,8 +10,8 @@ import java.util.List;
 public class FacturationService {
     private FacturationRepository repository;
 
-    public FacturationService(FacturationRepository repository) {
-        this.repository = repository;
+    public FacturationService() {
+        this.repository = new FacturationRepository();
     }
 
     public void ajouterFacture(Facturation facture) {

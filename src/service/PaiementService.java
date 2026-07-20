@@ -10,12 +10,12 @@ public class PaiementService {
     private PaiementRepository paiementRepository;
     private FacturationService facturationService;
 
-    public PaiementService(PaiementRepository paiementRepository, FacturationService facturationService) {
-        this.paiementRepository = paiementRepository;
+    public PaiementService(FacturationService facturationService) {
+        this.paiementRepository = new PaiementRepository();
         this.facturationService = facturationService;
     }
 
-    // EXIGENCE : Enregistrer un paiement et mettre à jour le statut de la facture liée
+    // Enregistrer un paiement et mettre à jour le statut de la facture liée
     public boolean enregistrerPaiement(paiement p) {
         Facturation facture = p.getFacture();
         if (facture == null) return false;
@@ -33,7 +33,7 @@ public class PaiementService {
         return paiementRepository.findAll();
     }
 
-    // EXIGENCE : Afficher les paiements d'une facture spécifique
+    // Afficher les paiements d'une facture spécifique
     public List<paiement> listerPaiementsParFacture(int idFacture) {
         List<paiement> resultat = new ArrayList<>();
         Facturation f = facturationService.rechercherParId(idFacture);

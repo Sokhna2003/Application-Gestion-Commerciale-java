@@ -6,9 +6,10 @@ import java.util.List;
 
 public class CategorieProduitService {
     private CategorieProduitRepository repository;
-
-    public CategorieProduitService(CategorieProduitRepository repository) {
-        this.repository = repository;
+    
+    // Le constructeur crée lui-même la liste en mémoire via le repository
+    public CategorieProduitService() {
+        this.repository = new CategorieProduitRepository();
     }
 
     public void ajouterCategorie(CategorieProduit categorie) {
